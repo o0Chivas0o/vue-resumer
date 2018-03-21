@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>简历编辑器</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="page" id="app">
+    <aside>
+        <div class="upper">
+            <ul class="actions">
+                <li>
+                    <button class="button">保存</button>
+                </li>
+                <li>
+                    <button class="button">分享</button>
+                </li>
+                <li>
+                    <button class="button">打印</button>
+                </li>
+                <li>
+                    <button class="button">换肤</button>
+                </li>
+            </ul>
+        </div>
+        <div class="down">
+            <button class="button">登出</button>
+        </div>
+    </aside>
+    <main>
+        <div class="resume">
+            <section>
+                <h1 contenteditable="true">
+                    <input type="text" v-model="resume.name">
+                </h1>
+                <p class="wantJob">应聘职位:{{resume.wantedJob}}</p>
+                <p class="profile">
+                       性别:{{resume.gender}} | 出生年月:{{resume.birthday}} | 联系方式:{{resume.content}}
+                </p>
+            </section>
+            <section class="skills">
+                <h2>技能</h2>
+                <ul>
+                    <li>
+                        <span class="name">静态页面制作</span>
+                        <div class="description">技能描述</div>
+                    </li>
+                    <li>
+                        <span class="name">静态页面制作</span>
+                        <div class="description">技能描述</div>
+                    </li>
+                    <li>
+                        <span class="name">静态页面制作</span>
+                        <div class="description">技能描述</div>
+                    </li>
+                    <li>
+                        <span class="name">静态页面制作</span>
+                        <div class="description">技能描述</div>
+                    </li>
+                </ul>
+            </section>
+            <section class="projects">
+                <h2>项目经历</h2>
+                <ol>
+                    <li>
+                        <header>
+                            <div class="start">
+                                <h3 class="name">我的简历</h3>
+                                <span class="link">XXXXXXXXXXX</span>
+                            </div>
+                            <div class="end">
+                                <span class="keywords">CSS3、jQuery、响应式</span>
+                            </div>
+                        </header>
+                        <p class="description">
+                            我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
+                    </li>
+                    <li>
+                        <header>
+                            <div class="start">
+                                <h3 class="name">我的简历</h3>
+                                <span class="link">XXXXXXXXXXX</span>
+                            </div>
+                            <div class="end">
+                                <span class="keywords">CSS3、jQuery、响应式</span>
+                            </div>
+                        </header>
+                        <p class="description">
+                            我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
+                    </li>
+                    <li>
+                        <header>
+                            <div class="start">
+                                <h3 class="name">我的简历</h3>
+                                <span class="link">XXXXXXXXXXX</span>
+                            </div>
+                            <div class="end">
+                                <span class="keywords">CSS3、jQuery、响应式</span>
+                            </div>
+                        </header>
+                        <p class="description">
+                            我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
+                    </li>
+                    <li>
+                        <header>
+                            <div class="start">
+                                <h3 class="name">我的简历</h3>
+                                <span class="link">XXXXXXXXXXX</span>
+                            </div>
+                            <div class="end">
+                                <span class="keywords">CSS3、jQuery、响应式</span>
+                            </div>
+                        </header>
+                        <p class="description">
+                            我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
+                    </li>
+                    <li>
+                        <header>
+                            <div class="start">
+                                <h3 class="name">我的简历</h3>
+                                <span class="link">XXXXXXXXXXX</span>
+                            </div>
+                            <div class="end">
+                                <span class="keywords">CSS3、jQuery、响应式</span>
+                            </div>
+                        </header>
+                        <p class="description">
+                            我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
+                    </li>
+                </ol>
+            </section>
+        </div>
+    </main>
+</div>
+<script src="../vendors/av-min.js"></script>
+<script src="../vendors/vue.min.js"></script>
+<script src="./js/av.js"></script>
+<script>
+   let app = new Vue({
+     el:'#app',
+     data:{
+       resume:{
+         name:'李智颖',
+         gender:'男',
+         birthday:'1993.06',
+         wantedJob:'前端',
+         content:'13000000000'
+       }
+     },
+     methods:{
+     }
+     })
+</script>
+</body>
+</html>
