@@ -30,13 +30,31 @@
     </aside>
     <main>
         <div class="resume">
-            <section>
-                <h1 contenteditable="true">
-                    <input type="text" v-model="resume.name">
-                </h1>
-                <p class="wantJob">应聘职位:{{resume.wantedJob}}</p>
+            <section class="userProfile">
+                <h3>
+                    <editable-span
+                            v-bind:value="resume.name"
+                            v-on:edit="onEdit('name',$event)"></editable-span>
+                </h3>
+                <p class="wantJob">应聘职位:<editable-span
+                        v-bind:value="resume.wantedJob"
+                        v-on:edit="onEdit('wantedJob',$event)">
+                </editable-span></p>
                 <p class="profile">
-                       性别:{{resume.gender}} | 出生年月:{{resume.birthday}} | 联系方式:{{resume.content}}
+                    性别:<editable-span
+                        :value="resume.gender"
+                        @edit="onEdit('gender',$event)">
+                </editable-span>
+                    |
+                    出生年月:<editable-span
+                        :value="resume.birthday"
+                        @edit="onEdit('birthday',$event)">
+                </editable-span>
+                    |
+                    联系方式:<editable-span
+                        :value="resume.content"
+                        @edit="onEdit('content',$event)">
+                </editable-span>
                 </p>
             </section>
             <section class="skills">
@@ -137,20 +155,46 @@
 <script src="../vendors/vue.min.js"></script>
 <script src="./js/av.js"></script>
 <script>
-   let app = new Vue({
-     el:'#app',
-     data:{
-       resume:{
-         name:'李智颖',
-         gender:'男',
-         birthday:'1993.06',
-         wantedJob:'前端',
-         content:'13000000000'
-       }
-     },
-     methods:{
-     }
-     })
+  Vue.component(
+    'editable-span',
+    {
+      props:['value'],
+      template: `
+         <span class="editableSpan">
+            <span v-show="!editing">{{value}}</span>
+            <input v-show="editing" type="text" v-bind:value="value" @input="triggerEdit">
+            <button @click="editing = !editing">edit</button>
+         </span>
+        `,
+      data () {
+        return {
+          editing: false
+        }
+      },
+      methods:{
+        triggerEdit(e){
+          this.$emit('edit',e.target.value)
+        }
+      }
+    }
+  )
+  let app = new Vue({
+    el: '#app',
+    data: {
+      resume: {
+        name: '李智颖',
+        gender: '男',
+        birthday: '1993.06',
+        wantedJob: '前端',
+        content: '13000000000'
+      }
+    },
+    methods: {
+      onEdit(key,value){
+        this.resume[key] = value
+      }
+    }
+  })
 </script>
 </body>
 </html>

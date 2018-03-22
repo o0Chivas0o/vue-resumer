@@ -19,9 +19,13 @@ button {font: inherit}
     .resume > section{margin: 50px 0;}
     .resume > section > h1{text-align: center;margin: 20px;}
     .resume > section > h2{text-align: center;margin: 20px;}
-    .resume input{border:none;font:inherit;text-align: center;}
-    .resume .profile{text-align: center;padding: 5px;}
-    .resume .wantJob{display: flex;justify-content: center;align-items: center;padding: 5px;}
+    .resume input{;font:inherit;text-align: center;}
+    .resume .userProfile{display: flex;flex-direction:column;justify-content: center;align-items: center}
+    .resume .editableSpan{position: relative;}
+    .resume .editableSpan button{display: none;position: absolute;top: 0;left: 100%;}
+    .resume .editableSpan:hover button{display: inline-block;}
+    .resume .profile{padding: 5px;}
+    .resume .wantJob{padding: 5px;}
     .resume .skills > ul{display: flex;flex-wrap: wrap;justify-content: space-between;}
     .resume .skills > ul > li{width: 48%;margin-top: 10px;border: 1px solid #dddddd;padding: 5px;}
     .resume .projects{}
