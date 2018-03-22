@@ -28,7 +28,7 @@ button {font: inherit}
     .resume .wantJob{padding: 5px;}
     .resume .skills > ul{display: flex;flex-wrap: wrap;justify-content: space-between;}
     .resume .skills > ul > li{width: 48%;margin-top: 10px;border: 1px solid #dddddd;padding: 5px;}
-    .resume .projects{}
+    .resume .projects{ }
     .resume .projects header{display: flex;align-items: center;justify-content: space-between;margin-bottom: 10px;}
     .resume .projects header h3 {margin-right: 1em;}
     .resume .projects header .start{display: flex;}
