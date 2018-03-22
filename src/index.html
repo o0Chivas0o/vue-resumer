@@ -154,47 +154,7 @@
 <script src="../vendors/av-min.js"></script>
 <script src="../vendors/vue.min.js"></script>
 <script src="./js/av.js"></script>
-<script>
-  Vue.component(
-    'editable-span',
-    {
-      props:['value'],
-      template: `
-         <span class="editableSpan">
-            <span v-show="!editing">{{value}}</span>
-            <input v-show="editing" type="text" v-bind:value="value" @input="triggerEdit">
-            <button @click="editing = !editing">edit</button>
-         </span>
-        `,
-      data () {
-        return {
-          editing: false
-        }
-      },
-      methods:{
-        triggerEdit(e){
-          this.$emit('edit',e.target.value)
-        }
-      }
-    }
-  )
-  let app = new Vue({
-    el: '#app',
-    data: {
-      resume: {
-        name: '李智颖',
-        gender: '男',
-        birthday: '1993.06',
-        wantedJob: '前端',
-        content: '13000000000'
-      }
-    },
-    methods: {
-      onEdit(key,value){
-        this.resume[key] = value
-      }
-    }
-  })
-</script>
+<script src="./js/editable-span.js"></script>
+<script src="./js/app.js"></script>
 </body>
 </html>
