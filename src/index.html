@@ -161,10 +161,12 @@
         </div>
     </main>
     <div class="login"
-         v-show="loginVisible">
+         v-show="loginVisible"
+         v-cloak>
         <form class="form">
             <h2>登录</h2>
-            <button @click="loginVisible = false"
+            <button type="button"
+                    @click="loginVisible = false"
                     @submit.prevent="onLoginIn">关闭</button>
             <div class="row">
                 <label for="">邮箱
@@ -188,11 +190,13 @@
         </form>
     </div>
     <div class="signUp"
-         v-show="signUpVisible">
+         v-show="signUpVisible"
+         v-cloak>
         <form class="form"
               @submit.prevent="onSignUp">
             <h2>注册</h2>
-            <button @click="signUpVisible = false">关闭</button>
+            <button type="button"
+                    @click="signUpVisible = false">关闭</button>
             <div class="row">
                 <label for="">邮箱
                     <input type="text"
