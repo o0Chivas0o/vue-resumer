@@ -14,7 +14,8 @@
         <div class="upper">
             <ul class="actions">
                 <li>
-                    <button class="button" @click="onClickSave ">保存</button>
+                    <button class="button"
+                            @click="onClickSave">保存</button>
                 </li>
                 <li>
                     <button class="button">分享</button>
@@ -28,7 +29,8 @@
             </ul>
         </div>
         <div class="down">
-            <button class="button">登出</button>
+            <button class="button"
+                    @click="onLogout">登出</button>
         </div>
     </aside>
     <main>
@@ -162,19 +164,22 @@
          v-show="loginVisible">
         <form class="form">
             <h2>登录</h2>
-            <button @click="loginVisible = false">关闭</button>
+            <button @click="loginVisible = false"
+                    @submit.prevent="onLoginIn">关闭</button>
             <div class="row">
                 <label for="">邮箱
-                    <input type="text">
+                    <input type="text"
+                           v-model="login.email">
                 </label>
             </div>
             <div class="row">
                 <label for="">密码
-                    <input type="text">
+                    <input type="text"
+                           v-model="login.password">
                 </label>
             </div>
             <div class="actions">
-                <button>提交</button>
+                <button type="submit">提交</button>
                 <a href="#"
                    @click="signUpVisible = true;loginVisible = false">
                     注册
@@ -182,23 +187,28 @@
             </div>
         </form>
     </div>
-    <div class="signUp" v-show="signUpVisible">
-        <form class="form">
-            <h2>登录</h2>
+    <div class="signUp"
+         v-show="signUpVisible">
+        <form class="form"
+              @submit.prevent="onSignUp">
+            <h2>注册</h2>
             <button @click="signUpVisible = false">关闭</button>
             <div class="row">
                 <label for="">邮箱
-                    <input type="text">
+                    <input type="text"
+                           v-model="signUp.email">
                 </label>
             </div>
             <div class="row">
                 <label for="">密码
-                    <input type="text">
+                    <input type="text"
+                           v-model="signUp.password">
                 </label>
             </div>
             <div class="actions">
-                <button>提交</button>
-                <a href="#"  @click="signUpVisible = false;loginVisible = true">登录</a>
+                <button type="submit">提交</button>
+                <a href="#"
+                   @click="signUpVisible = false;loginVisible = true">登录</a>
             </div>
         </form>
     </div>
