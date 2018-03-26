@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>简历编辑器</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/editableSpan.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/signUp.css">
 </head>
 <body>
 <div class="page" id="app">
@@ -11,7 +14,7 @@
         <div class="upper">
             <ul class="actions">
                 <li>
-                    <button class="button">保存</button>
+                    <button class="button" @click="onClickSave ">保存</button>
                 </li>
                 <li>
                     <button class="button">分享</button>
@@ -33,28 +36,33 @@
             <section class="userProfile">
                 <h3>
                     <editable-span
-                            v-bind:value="resume.name"
-                            v-on:edit="onEdit('name',$event)"></editable-span>
+                            :value="resume.name"
+                            @edit="onEdit('name',$event)"></editable-span>
                 </h3>
-                <p class="wantJob">应聘职位:<editable-span
-                        v-bind:value="resume.wantedJob"
-                        v-on:edit="onEdit('wantedJob',$event)">
-                </editable-span></p>
+                <p class="wantJob">应聘职位:
+                    <editable-span
+                            :value="resume.wantedJob"
+                            @edit="onEdit('wantedJob',$event)">
+                    </editable-span>
+                </p>
                 <p class="profile">
-                    性别:<editable-span
-                        :value="resume.gender"
-                        @edit="onEdit('gender',$event)">
-                </editable-span>
+                    性别:
+                    <editable-span
+                            :value="resume.gender"
+                            @edit="onEdit('gender',$event)">
+                    </editable-span>
                     |
-                    出生年月:<editable-span
-                        :value="resume.birthday"
-                        @edit="onEdit('birthday',$event)">
-                </editable-span>
+                    出生年月:
+                    <editable-span
+                            :value="resume.birthday"
+                            @edit="onEdit('birthday',$event)">
+                    </editable-span>
                     |
-                    联系方式:<editable-span
-                        :value="resume.content"
-                        @edit="onEdit('content',$event)">
-                </editable-span>
+                    联系方式:
+                    <editable-span
+                            :value="resume.content"
+                            @edit="onEdit('content',$event)">
+                    </editable-span>
                 </p>
             </section>
             <section class="skills">
@@ -150,6 +158,50 @@
             </section>
         </div>
     </main>
+    <div class="login"
+         v-show="loginVisible">
+        <form class="form">
+            <h2>登录</h2>
+            <button @click="loginVisible = false">关闭</button>
+            <div class="row">
+                <label for="">邮箱
+                    <input type="text">
+                </label>
+            </div>
+            <div class="row">
+                <label for="">密码
+                    <input type="text">
+                </label>
+            </div>
+            <div class="actions">
+                <button>提交</button>
+                <a href="#"
+                   @click="signUpVisible = true;loginVisible = false">
+                    注册
+                </a>
+            </div>
+        </form>
+    </div>
+    <div class="signUp" v-show="signUpVisible">
+        <form class="form">
+            <h2>登录</h2>
+            <button @click="signUpVisible = false">关闭</button>
+            <div class="row">
+                <label for="">邮箱
+                    <input type="text">
+                </label>
+            </div>
+            <div class="row">
+                <label for="">密码
+                    <input type="text">
+                </label>
+            </div>
+            <div class="actions">
+                <button>提交</button>
+                <a href="#"  @click="signUpVisible = false;loginVisible = true">登录</a>
+            </div>
+        </form>
+    </div>
 </div>
 <script src="../vendors/av-min.js"></script>
 <script src="../vendors/vue.min.js"></script>

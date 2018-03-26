@@ -1,0 +1,3 @@
+.resume .editableSpan{position: relative;}
+.resume .editableSpan button{display: none;position: absolute;top: 0;left: 100%;}
+.resume .editableSpan:hover button{display: inline-block;}

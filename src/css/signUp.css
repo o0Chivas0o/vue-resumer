@@ -1,0 +1,16 @@
+.signUp {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    min-height: 400px;
+    background: #DDDDDD;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.signUp > .form {
+    width: 100%;
+}
