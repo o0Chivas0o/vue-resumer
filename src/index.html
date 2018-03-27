@@ -30,12 +30,14 @@
         </div>
         <div class="down">
             <button class="button"
-                    @click="onLogout">登出</button>
+                    @click="onLogout"
+                    v-show="!!currentUser.id">登出</button>
         </div>
     </aside>
     <main>
         <div class="resume">
             <section class="userProfile">
+                {{currentUser}}
                 <h3>
                     <editable-span
                             :value="resume.name"
@@ -163,11 +165,11 @@
     <div class="login"
          v-show="loginVisible"
          v-cloak>
-        <form class="form">
+        <form class="form"
+              @submit.prevent="onLogin">
             <h2>登录</h2>
             <button type="button"
-                    @click="loginVisible = false"
-                    @submit.prevent="onLoginIn">关闭</button>
+                    @click="loginVisible = false">关闭</button>
             <div class="row">
                 <label for="">邮箱
                     <input type="text"
@@ -181,7 +183,7 @@
                 </label>
             </div>
             <div class="actions">
-                <button type="submit">提交</button>
+                <button type="submit">登录</button>
                 <a href="#"
                    @click="signUpVisible = true;loginVisible = false">
                     注册
