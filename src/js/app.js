@@ -12,7 +12,13 @@ let app = new Vue({
       gender: '男',
       birthday: '1993.06',
       wantedJob: '前端',
-      content: '13000000000'
+      content: '13000000000',
+      skills: [
+        {name: '请填写技能名称', description: '请填写技能描述'},
+        {name: '请填写技能名称', description: '请填写技能描述'},
+        {name: '请填写技能名称', description: '请填写技能描述'},
+        {name: '请填写技能名称', description: '请填写技能描述'}
+      ]
     },
     login: {
       email: '',
@@ -48,15 +54,15 @@ let app = new Vue({
       user.setPassword(this.signUp.password)
       user.setEmail(this.signUp.email)
       user.signUp().then(
-        (user) =>{
+        (user) => {
           alert('注册成功!')
           user = user.toJSON()
           this.currentUser.objectId = user.objectId
           this.currentUser.email = user.email
           this.signUpVisible = false
-      },(error)=> {
+        }, (error) => {
           alert(error.rawMessage)
-      })
+        })
     },
     onClickSave () {
       let currentUser = AV.User.current()
@@ -71,10 +77,10 @@ let app = new Vue({
       let user = AV.Object.createWithoutData('User', objectId)
       user.set('resume', this.resume)
       user.save().then(
-        ()=>{
+        () => {
           alert('保存成功')
         },
-        ()=>{
+        () => {
           alert('保存失败')
         })
     },
@@ -83,12 +89,12 @@ let app = new Vue({
       alert('注销成功')
       window.location.reload()
     },
-    getResume: function () {
+    getResume() {
       let query = new AV.Query('User')
       query.get(this.currentUser.objectId).then(
         (user) => {
           let resume = user.toJSON().resume
-          this.resume = resume
+          object.assign(this.resume,resume)
         },
         (error) => {
           // 异常处理
