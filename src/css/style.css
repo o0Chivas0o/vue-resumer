@@ -4,6 +4,7 @@ a {text-decoration: none}
 ol, ul {list-style: none}
 body {font-size: 18px}
 button {font: inherit}
+div[v-cloak]{display: none;}
 
 @media (min-width: 500px) {
     .page {height: 100vh;overflow: hidden;display: flex;}
@@ -24,7 +25,8 @@ button {font: inherit}
     .resume .profile{padding: 5px;}
     .resume .wantJob{padding: 5px;}
     .resume .skills > ul{display: flex;flex-wrap: wrap;justify-content: space-between;}
-    .resume .skills > ul > li{width: 48%;margin-top: 10px;border: 1px solid #dddddd;padding: 5px;}
+    .resume .skills > ul > li{width: 48%;margin-top: 10px;border: 1px solid #dddddd;padding: 5px;position: relative;}
+    .resume .skills .remove{position: absolute;top:0;right: 0;}
     .resume .projects{}
     .resume .projects header{display: flex;align-items: center;justify-content: space-between;margin-bottom: 10px;}
     .resume .projects header h3 {margin-right: 1em;}

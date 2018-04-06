@@ -15,7 +15,8 @@
             <ul class="actions">
                 <li>
                     <button class="button"
-                            @click="onClickSave">保存</button>
+                            @click="onClickSave">保存
+                    </button>
                 </li>
                 <li>
                     <button class="button">分享</button>
@@ -31,7 +32,8 @@
         <div class="down">
             <button class="button"
                     @click="onLogout"
-                    v-show="!!currentUser.objectId">登出</button>
+                    v-show="!!currentUser.objectId">登出
+            </button>
         </div>
     </aside>
     <main>
@@ -75,15 +77,21 @@
                     <li v-for="(skill,index) in resume.skills">
                         <editable-span class="name"
                                        :value="skill.name"
-                                       @edit="onEdit(`skill[${index}].name`,$event)">
+                                       @edit="onEdit(`skills[${index}].name`,$event)">
                             {{skill.name}}
                         </editable-span>
                         <div class="description">
                             <editable-span :value="skill.description"
-                                           @edit="onEdit(`skill[${index}].description`,$event)">
+                                           @edit="onEdit(`skills[${index}].description`,$event)">
                                 {{skill.description}}
                             </editable-span>
                         </div>
+                        <span class="remove"
+                              v-if="index>=4"
+                              @click="removeSkill(index)">x</span>
+                    </li>
+                    <li>
+                        <span @click="addSkill">添加</span>
                     </li>
                 </ul>
             </section>
@@ -166,7 +174,8 @@
               @submit.prevent="onLogin">
             <h2>登录</h2>
             <button type="button"
-                    @click="loginVisible = false">关闭</button>
+                    @click="loginVisible = false">关闭
+            </button>
             <div class="row">
                 <label for="">邮箱
                     <input type="text"
@@ -195,7 +204,8 @@
               @submit.prevent="onSignUp">
             <h2>注册</h2>
             <button type="button"
-                    @click="signUpVisible = false">关闭</button>
+                    @click="signUpVisible = false">关闭
+            </button>
             <div class="row">
                 <label for="">邮箱
                     <input type="text"
