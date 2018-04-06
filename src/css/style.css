@@ -30,6 +30,7 @@ div[v-cloak]{display: none;}
     .resume .projects header{display: flex;align-items: center;justify-content: space-between;margin-bottom: 10px;}
     .resume .projects header h3 {margin-right: 1em;}
     .resume .projects header .start{display: flex;}
-    .resume .projects > ol{}
     .resume .projects > ol > li{margin: 30px 0; border:1px solid #dddddd;padding: 10px;position: relative;}
+    .closeShare{border-radius: 5px;width: 4em;box-shadow:2px 2px 2px black;outline: none}
+    .exitPreview {position: fixed;left: 20px;top: 20px;}
 }
