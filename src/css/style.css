@@ -26,11 +26,10 @@ div[v-cloak]{display: none;}
     .resume .wantJob{padding: 5px;}
     .resume .skills > ul{display: flex;flex-wrap: wrap;justify-content: space-between;}
     .resume .skills > ul > li{width: 48%;margin-top: 10px;border: 1px solid #dddddd;padding: 5px;position: relative;}
-    .resume .skills .remove{position: absolute;top:0;right: 0;}
-    .resume .projects{}
+    .resume .remove{position: absolute;top:0;right: 0;}
     .resume .projects header{display: flex;align-items: center;justify-content: space-between;margin-bottom: 10px;}
     .resume .projects header h3 {margin-right: 1em;}
     .resume .projects header .start{display: flex;}
     .resume .projects > ol{}
-    .resume .projects > ol > li{margin: 30px 0; border:1px solid #dddddd;padding: 10px;}
+    .resume .projects > ol > li{margin: 30px 0; border:1px solid #dddddd;padding: 10px;position: relative;}
 }

@@ -39,7 +39,6 @@
     <main>
         <div class="resume">
             <section class="userProfile">
-                {{currentUser}}
                 <h3>
                     <editable-span
                             :value="resume.name"
@@ -98,70 +97,45 @@
             <section class="projects">
                 <h2>项目经历</h2>
                 <ol>
-                    <li>
+                    <li v-for="(project,index) in resume.projects">
                         <header>
                             <div class="start">
-                                <h3 class="name">我的简历</h3>
-                                <span class="link">XXXXXXXXXXX</span>
+                                <h3 class="name">
+                                    <editable-span :value="project.name"
+                                                   @edit="onEdit(`projects[${index}].name`,$event)">
+                                        {{project.name}}
+                                    </editable-span>
+                                </h3>
+                                <span class="link">
+                                    <editable-span :value="project.link"
+                                                   @edit="onEdit(`projects[${index}].link`,$event)">
+                                        {{project.link}}
+                                    </editable-span>
+                                </span>
                             </div>
                             <div class="end">
-                                <span class="keywords">CSS3、jQuery、响应式</span>
+                                <span class="keywords">
+                                    <editable-span :value="project.keywords"
+                                                   @edit="onEdit(`projects[${index}].keywords`,$event)">
+                                        {{project.keywords}}
+                                    </editable-span>
+                                </span>
                             </div>
                         </header>
                         <p class="description">
-                            我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
+                            <editable-span :value="project.description"
+                                           @edit="onEdit(`projects[${index}].description`,$event)">
+                                {{project.description}}
+                            </editable-span>
+                        </p>
+                        <span class="remove"
+                              v-if="index>=2"
+                              @click="removeProject(index)">x</span>
                     </li>
                     <li>
-                        <header>
-                            <div class="start">
-                                <h3 class="name">我的简历</h3>
-                                <span class="link">XXXXXXXXXXX</span>
-                            </div>
-                            <div class="end">
-                                <span class="keywords">CSS3、jQuery、响应式</span>
-                            </div>
-                        </header>
-                        <p class="description">
-                            我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
-                    </li>
-                    <li>
-                        <header>
-                            <div class="start">
-                                <h3 class="name">我的简历</h3>
-                                <span class="link">XXXXXXXXXXX</span>
-                            </div>
-                            <div class="end">
-                                <span class="keywords">CSS3、jQuery、响应式</span>
-                            </div>
-                        </header>
-                        <p class="description">
-                            我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
-                    </li>
-                    <li>
-                        <header>
-                            <div class="start">
-                                <h3 class="name">我的简历</h3>
-                                <span class="link">XXXXXXXXXXX</span>
-                            </div>
-                            <div class="end">
-                                <span class="keywords">CSS3、jQuery、响应式</span>
-                            </div>
-                        </header>
-                        <p class="description">
-                            我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
-                    </li>
-                    <li>
-                        <header>
-                            <div class="start">
-                                <h3 class="name">我的简历</h3>
-                                <span class="link">XXXXXXXXXXX</span>
-                            </div>
-                            <div class="end">
-                                <span class="keywords">CSS3、jQuery、响应式</span>
-                            </div>
-                        </header>
-                        <p class="description">
-                            我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的我是怎么做这个项目的</p>
+                        <span @click="addProject">
+                            添加
+                        </span>
                     </li>
                 </ol>
             </section>
