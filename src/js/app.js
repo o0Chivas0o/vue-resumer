@@ -81,6 +81,7 @@ let app = new Vue({
           this.currentUser.objectId = user.objectId
           this.currentUser.email = user.email
           this.loginVisible = false
+          location.reload()
         }, (error) => {
           if (error.code === 211) {
             alert('邮箱不存在')
