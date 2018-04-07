@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/signUp.css">
     <link rel="stylesheet" href="./css/share.css">
+    <link rel="stylesheet" href="./css/print.css" media="print">
 </head>
 <body>
 <div class="page" id="app">
@@ -24,7 +25,8 @@
                             @click="shareVisible = true">分享</button>
                 </li>
                 <li>
-                    <button class="button">打印</button>
+                    <button class="button"
+                            @click="print">打印</button>
                 </li>
                 <li>
                     <button class="button">换肤</button>
@@ -93,7 +95,8 @@
                               v-if="index>=4 && mode==='edit'"
                               @click="removeSkill(index)">x</span>
                     </li>
-                    <li v-if="mode === 'edit'">
+                    <li class="add"
+                        v-if="mode === 'edit'" >
                         <span @click="addSkill">添加</span>
                     </li>
                 </ul>
@@ -140,7 +143,8 @@
                               v-if="index>=2 && mdoe==='edit'"
                               @click="removeProject(index)">x</span>
                     </li>
-                    <li v-if="mode === 'edit'">
+                    <li class="add"
+                        v-if="mode === 'edit'">
                         <span @click="addProject">
                             添加
                         </span>
