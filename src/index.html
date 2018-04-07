@@ -25,7 +25,7 @@
                 </li>
                 <li>
                     <button class="button"
-                            @click="shareVisible = true">分享
+                            @click="onShare">分享
                     </button>
                 </li>
                 <li>
@@ -43,7 +43,7 @@
         <div class="down">
             <button class="button"
                     @click="onLogout"
-                    v-show="!!currentUser.objectId">登出
+                    v-show="hasLogin()">登出
             </button>
         </div>
     </aside>
@@ -160,88 +160,27 @@
             </section>
         </div>
     </main>
-    <div class="login"
-         v-show="loginVisible"
-         v-cloak>
-        <form class="form"
-              @submit.prevent="onLogin">
-            <h2>登录</h2>
-            <button type="button"
-                    @click="loginVisible = false">关闭
-            </button>
-            <div class="row">
-                <label for="">邮箱
-                    <input type="text"
-                           v-model="login.email">
-                </label>
-            </div>
-            <div class="row">
-                <label for="">密码
-                    <input type="text"
-                           v-model="login.password">
-                </label>
-            </div>
-            <div class="actions">
-                <button type="submit">登录</button>
-                <a href="#"
-                   @click="signUpVisible = true;loginVisible = false">
-                    注册
-                </a>
-            </div>
-        </form>
-    </div>
-    <div class="signUp"
-         v-show="signUpVisible"
-         v-cloak>
-        <form class="form"
-              @submit.prevent="onSignUp">
-            <h2>注册</h2>
-            <button type="button"
-                    @click="signUpVisible = false">关闭
-            </button>
-            <div class="row">
-                <label for="">邮箱
-                    <input type="text"
-                           v-model="signUp.email">
-                </label>
-            </div>
-            <div class="row">
-                <label for="">密码
-                    <input type="text"
-                           v-model="signUp.password">
-                </label>
-            </div>
-            <div class="actions">
-                <button type="submit">提交</button>
-                <a href="#"
-                   @click="signUpVisible = false;loginVisible = true">登录</a>
-            </div>
-        </form>
-    </div>
-    <div class="share"
-         v-show="shareVisible"
-         v-cloak>
-        <h2>请将下面链接发送给面试官</h2>
-        <label>
-            <textarea readonly>{{shareLink}}</textarea>
-        </label>
-        <button class="closeShare"
-                @click="shareVisible = false">退出
-        </button>
-    </div>
+    <login v-show="loginVisible"
+           @close="loginVisible = false"
+           @login="onLogin"></login>
+    <signUp v-show="signUpVisible"></signUp>
+    <share v-show="shareVisible"
+           :share-link="shareLink"
+           @close="shareVisible = false"></share>
     <button class="exitPreview"
             @click="mode = 'edit'"
             v-if="mode === 'preview'">退出预览
     </button>
-    <div class="colorPicker" v-show="colorPickerVisible">
-        <button @click="setTheme('default')">默认</button>
-        <button @click="setTheme('dark')">暗黑</button>
-        <button @click="colorPickerVisible=false">退出</button>
-    </div>
+    <color-picker v-show="colorPickerVisible"
+                  @close="colorPickerVisible = false"></color-picker>
 </div>
 <script src="../vendors/av-min.js"></script>
 <script src="../vendors/vue.min.js"></script>
 <script src="./js/av.js"></script>
+<script src="./js/login.js"></script>
+<script src="./js/signUp.js"></script>
+<script src="./js/share.js"></script>
+<script src="./js/color-picker.js"></script>
 <script src="./js/editable-span.js"></script>
 <script src="./js/app.js"></script>
 </body>

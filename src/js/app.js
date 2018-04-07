@@ -3,8 +3,8 @@ let app = new Vue({
   data: {
     loginVisible: false,
     signUpVisible: false,
-    shareVisible:false,
-    colorPickerVisible:false,
+    shareVisible: false,
+      colorPickerVisible: false,
     previewUser: {
       objectId: undefined,
     },
@@ -30,15 +30,7 @@ let app = new Vue({
         {name: '请填写项目名称', link: 'http://...', keywords: '请填写关键词', description: '请填写项目描述'}
       ]
     },
-    login: {
-      email: '',
-      password: ''
-    },
-    signUp: {
-      email: '',
-      password: ''
-    },
-    shareLink : '',
+    shareLink: '',
     mode: 'edit', // 'preview'
   },
   computed: {
@@ -51,7 +43,7 @@ let app = new Vue({
     'currentUser.objectId': function (newValue, oldValue) {
       console.log(newValue)
       if (newValue) {
-        this.getResume(this.currentUser)
+        this.getResume(this.currentUser).then((resume) => this.resume = resume)
       }
     }
   },
@@ -75,38 +67,6 @@ let app = new Vue({
       }
       // this.resume['skills']['0']['name'] = value
     },
-    onLogin () {
-      AV.User.logIn(this.login.email, this.login.password).then(
-        (user) => {
-          user = user.toJSON()
-          this.currentUser.objectId = user.objectId
-          this.currentUser.email = user.email
-          this.loginVisible = false
-          location.reload()
-        }, (error) => {
-          if (error.code === 211) {
-            alert('邮箱不存在')
-          } else if (error.code === 210) {
-            alert('邮箱和密码不匹配')
-          }
-        })
-    },
-    onSignUp () {
-      let user = new AV.User()
-      user.setUsername(this.signUp.email)
-      user.setPassword(this.signUp.password)
-      user.setEmail(this.signUp.email)
-      user.signUp().then(
-        (user) => {
-          alert('注册成功!')
-          user = user.toJSON()
-          this.currentUser.objectId = user.objectId
-          this.currentUser.email = user.email
-          this.signUpVisible = false
-        }, (error) => {
-          alert(error.rawMessage)
-        })
-    },
     onClickSave () {
       let currentUser = AV.User.current()
       if (!currentUser) {
@@ -126,6 +86,12 @@ let app = new Vue({
         () => {
           alert('保存失败')
         })
+    },
+    onLogin (user) {
+      this.currentUser.objectId = user.objectId
+      this.currentUser.email = user.email
+      this.loginVisible = false
+      location.reload()
     },
     onLogout () {
       AV.User.logOut()
@@ -149,17 +115,24 @@ let app = new Vue({
     removeSkill (index) {
       this.resume.skills.splice(index, 1)
     },
-    addProject(){
+    addProject () {
       this.resume.projects.push({name: '请填写项目名称', link: 'http://...', keywords: '请填写关键词', description: '请填写项目描述'})
     },
-    removeProject(index){
-      this.resume.projects.splice(index,1)
+    removeProject (index) {
+      this.resume.projects.splice(index, 1)
     },
-    print(){
+    print () {
       window.print()
     },
-    setTheme(name){
-      document.body.className = name // 渐进式框架
+    onShare () {
+      if (this.hasLogin()) {
+        this.shareVisible = true
+      } else {
+        alert('请先登录')
+      }
+    },
+    hasLogin () {
+      return !!this.currentUser.objectId
     }
   }
 })
@@ -173,7 +146,6 @@ if (currentUser) {
     app.resume = resume
   })
 }
-
 
 // 获取预览用户的 id
 let search = location.search
