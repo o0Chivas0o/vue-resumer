@@ -5,12 +5,15 @@
     <title>简历编辑器</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/editableSpan.css">
+    <link rel="stylesheet" href="./css/themes/default.css">
+    <link rel="stylesheet" href="./css/themes/dark.css">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/signUp.css">
     <link rel="stylesheet" href="./css/share.css">
+    <link rel="stylesheet" href="./css/colorPicker.css">
     <link rel="stylesheet" href="./css/print.css" media="print">
 </head>
-<body>
+<body class="default">
 <div class="page" id="app">
     <aside v-show="mode === 'edit'">
         <div class="upper">
@@ -22,14 +25,18 @@
                 </li>
                 <li>
                     <button class="button"
-                            @click="shareVisible = true">分享</button>
+                            @click="shareVisible = true">分享
+                    </button>
                 </li>
                 <li>
                     <button class="button"
-                            @click="print">打印</button>
+                            @click="print">打印
+                    </button>
                 </li>
                 <li>
-                    <button class="button">换肤</button>
+                    <button class="button"
+                            @click="colorPickerVisible = !colorPickerVisible">换肤
+                    </button>
                 </li>
             </ul>
         </div>
@@ -96,7 +103,7 @@
                               @click="removeSkill(index)">x</span>
                     </li>
                     <li class="add"
-                        v-if="mode === 'edit'" >
+                        v-if="mode === 'edit'">
                         <span @click="addSkill">添加</span>
                     </li>
                 </ul>
@@ -219,11 +226,18 @@
             <textarea readonly>{{shareLink}}</textarea>
         </label>
         <button class="closeShare"
-                @click="shareVisible = false">退出</button>
+                @click="shareVisible = false">退出
+        </button>
     </div>
     <button class="exitPreview"
             @click="mode = 'edit'"
-            v-if="mode === 'preview'">退出预览</button>
+            v-if="mode === 'preview'">退出预览
+    </button>
+    <div class="colorPicker" v-show="colorPickerVisible">
+        <button @click="setTheme('default')">默认</button>
+        <button @click="setTheme('dark')">暗黑</button>
+        <button @click="colorPickerVisible=false">退出</button>
+    </div>
 </div>
 <script src="../vendors/av-min.js"></script>
 <script src="../vendors/vue.min.js"></script>

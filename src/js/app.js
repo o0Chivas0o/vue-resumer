@@ -4,6 +4,7 @@ let app = new Vue({
     loginVisible: false,
     signUpVisible: false,
     shareVisible:false,
+    colorPickerVisible:false,
     previewUser: {
       objectId: undefined,
     },
@@ -38,7 +39,7 @@ let app = new Vue({
       password: ''
     },
     shareLink : '',
-    mode: 'edit' // 'preview'
+    mode: 'edit', // 'preview'
   },
   computed: {
     displayResume () {
@@ -156,6 +157,9 @@ let app = new Vue({
     },
     print(){
       window.print()
+    },
+    setTheme(name){
+      document.body.className = name // 渐进式框架
     }
   }
 })

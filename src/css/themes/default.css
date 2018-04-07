@@ -1,0 +1,14 @@
+body.default .resume > section{margin: 50px 0;}
+body.default .resume > section > h1{text-align: center;margin: 20px;}
+body.default .resume > section > h2{text-align: center;margin: 20px;}
+body.default .resume input{;font:inherit;text-align: center;}
+body.default .resume .userProfile{display: flex;flex-direction:column;justify-content: center;align-items: center}
+body.default .resume .profile{padding: 5px;}
+body.default .resume .wantJob{padding: 5px;}
+body.default .resume .skills > ul{display: flex;flex-wrap: wrap;justify-content: space-between;}
+body.default .resume .skills > ul > li{width: 48%;margin-top: 10px;border: 1px solid #dddddd;padding: 5px;position: relative;}
+body.default .resume .remove{position: absolute;top:0;right: 0;}
+body.default .resume .projects header{display: flex;align-items: center;justify-content: space-between;margin-bottom: 10px;}
+body.default .resume .projects header h3 {margin-right: 1em;}
+body.default .resume .projects header .start{display: flex;}
+body.default .resume .projects > ol > li{margin: 30px 0; border:1px solid #dddddd;padding: 10px;position: relative;}
