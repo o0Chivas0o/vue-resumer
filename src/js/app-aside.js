@@ -6,29 +6,29 @@ Vue.component('app-aside', {
             <ul class="actions">
                 <li>
                     <button class="button"
-                            @click="$emit('clickSave')">保存
+                            @click="$emit('save')">保存
                     </button>
                 </li>
                 <li>
                     <button class="button"
-                            @click="$emit('clickShare')">分享
+                            @click="$emit('share')">分享
                     </button>
                 </li>
                 <li>
                     <button class="button"
-                            @click="$emit('clickPrint')">打印
+                            @click="$emit('print')">打印
                     </button>
                 </li>
                 <li>
                     <button class="button"
-                            @click="$emit('clickChange')">换肤
+                            @click="$emit('change')">换肤
                     </button>
                 </li>
             </ul>
         </div>
         <div class="down">
             <button class="button"
-                    @click="$emit('clickLogout')"
+                    @click="$emit('logout')"
                     v-show="logoutVisible">登出
             </button>
         </div>
